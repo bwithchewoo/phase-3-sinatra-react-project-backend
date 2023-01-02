@@ -24,6 +24,12 @@ class ApplicationController < Sinatra::Base
       )
     token.to_json
   end
+  post "/boards" do
+    board = Board.create(
+      board_id: param[:board_id]
+    )
+    board.to_json
+  end
   delete '/tokens/:id' do
     token = Token.find(params[:id])
     token.destroy
