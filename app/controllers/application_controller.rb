@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
     tokens.to_json
   end
   get "/boards" do
-    boards = Board.all.order(:board_id)
+    boards = Board.all.order(:id)
     boards.to_json
   end
   post "/tokens" do
@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
   end
   post "/boards" do
     board = Board.create(
-      board_id: param[:board_id]
+      board_name: params[:board_name]
     )
     board.to_json
   end
